@@ -1,0 +1,23 @@
+a:link
+{
+	color:auto;
+	text-decoration:none;
+}
+
+a:visited
+{
+	color:auto;
+	text-decoration:none;
+}
+
+a:hover
+{
+	color:auto;
+	text-decoration:underline;
+}
+
+a:active
+{
+	color:auto;
+	text-decoration:underline;
+}
