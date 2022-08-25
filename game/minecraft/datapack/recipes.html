@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>配方</title>
+		<base target="_self"> 
+		
+		<link rel="stylesheet" type="text/css" href="../../../resources/a.css">
+		<link rel="stylesheet" type="text/css" href="../../../resources/background.css">
+	</head>
+
+	<body>
+		<div style="height:3000px;width:20px;float:left;"></div>
+
+		<div style="height:3000px;width:auto;">
+			<h1>配方</h1>
+
+			<a href="./datapack.html">返回数据包界面</a>
+
+			<!--数据包结构-->
+			<div>
+				<p>
+					<b>数据包文件结构</b>
+					<table border="0">
+						<tr>
+							<td>save/datapack/<a href="./json.html#name" style="color:green;">name</a>/</td>
+						</tr>
+						<tr>
+							<td></td><td><a href="./json.html#pack.mcmeta" style="color:green;">pack.mcmeta</a></td>
+						</tr>
+						<tr>
+							<td></td><td><a href="./json.html#pack.png" style="color:green;">pack.png</a></td>
+						</tr>
+						<!--之前的内容-->
+						<tr>
+							<td></td><td><a href="#data">data</a>/</td>
+						</tr>
+						<tr>
+							<td></td><td>&emsp;|&emsp;<a href="#namespace">namespace1</a>/</td>
+						</tr>
+						<tr>
+							<td></td><td>&emsp;|&emsp;&emsp;|&emsp;<a href="#recipes">recipes</a>/</td>
+						</tr>
+						<tr>
+							<td></td><td>&emsp;|&emsp;&emsp;|&emsp;&emsp;|&emsp;<a href="#object.json">object.json</a> </td>
+						</tr>
+						<tr>
+							<td></td><td>&emsp;|&emsp;&emsp;|&emsp;&emsp;|&emsp;...</td>
+						</tr>
+						<tr>
+							<td></td><td>&emsp;|&emsp;&emsp;|&emsp;...</td>
+						</tr>
+						<tr>
+							<td></td><td>&emsp;|&emsp;<a href="#namespace">namespace2</a>/</td>
+						</tr>
+						<tr>
+							<td></td><td>&emsp;|&emsp;...</td>
+						</tr>
+					</table>
+				</p>
+			</div>
+
+			<hr/>
+			<div id="data">
+				<p>
+					<b>data文件夹</b> <br/>
+					data文件夹用于存储数据包的数据信息。所有数据均在data文件夹下。
+				</p>
+			</div>
+
+			<hr/>
+			<div id="namespace">
+				<p>
+					<b>命名空间</b> <br/>
+					C++使用命名空间来避免重名问题，MC用命名空间分离各种数据包。例如原版叫做minecraft。<br/>
+				</p>
+				<ul>
+					<li>命名空间不能使用中文字符与大写字符。</li>
+					<li>仅可使用小写字母、数字、下划线和短横线(_和-)</li>
+				</ul>
+			</div>
+
+			<hr/>
+			<div id="recipes">
+				<p>
+					<b>recipes文件夹</b> <br/>
+					配方文件夹储存有关配方的数据，包括工作台、熔炉等方块的加工配方。<br/>
+					wiki：<a href="https://minecraft.fandom.com/zh/wiki/配方">配方</a>
+				</p>
+			</div>
+
+			<hr/>
+			<div id="object.json">
+				<p>
+					<b>配方json文件</b> <br/>
+					配方有8种类型，由type属性决定
+					<table border="1">
+						<tr>
+							<th>类型</th><th>属性</th>
+						</tr>
+						<tr>
+							<td><a href="#CS">工作台_有序</a></td> <td>crafting_shaped
+						</tr>
+						<tr>
+							<td>工作台_无序</td> <td>crafting_shapeless
+						</tr>
+						<tr>
+							<td>营火</td> <td>campfire_cooking
+						</tr>
+						<tr>
+							<td>熔炉</td> <td>smelting
+						</tr>
+						<tr>
+							<td>高炉</td> <td>blasting</td>
+						</tr>
+						<tr>
+							<td>烟熏炉</td> <td>smoking
+						</tr>
+						<tr>
+							<td>锻造台</td> <td>smithing
+						</tr>
+						<tr>
+							<td>切石机</td> <td>stonecutting
+						</tr>
+					</table>
+				</p>
+				<div id="CS" >
+					<p>
+						<b>有序合成</b> <br/>
+						下面是一个有序合成，用8个苹果合成8个苹果。<del>意义不明</del>
+					</p>
+					<!--示例json-->
+					<div>
+						<textarea cols="50" rows="15">{
+	"type":"crafting_shaped",
+	"pattern":[	"***",
+			"* *",
+			"***"],
+	"key":
+	{
+		"*":{
+			"item":"minecraft:apple"
+		}
+	},
+	"result":{
+		"item":"minecraft:apple",
+		"count":8
+	}
+}</textarea>
+					</div>
+					<p>
+						有序配方有4个属性：<a href="#CS_type"><i>type</i></a>、<a href="#CS_pattern"><i>pattern</i></a>、<a href="#CS_key"><i>key</i></a>、<a href="#CS_result"><i>result</i></a>
+					</p>
+
+					<!--type-->
+					<div id="CS_type">
+						<p>
+							<i>type</i>为固定值crafting_shaped，表示有序合成。需要按照相同顺序才能合成。支持轴对称（斧子）和平移（火把）。
+						</p>
+					</div>
+					
+					<!--pattern-->
+					<div id="CS_pattern">
+						<p>
+						<i>pattern</i>为合成表，值为数组类型。其中有三个字符串元素，分别对应工作台的三行。如["AAA","BC ","DDD"]对应：
+						</p>
+						<div>
+						<table border="1" style="float: inline-start;">
+							<tr>
+								<td>A</td><td>A</td><td>A</td>
+							</tr>
+							<tr>
+								<td>B</td><td>C</td><td></td>
+							</tr>
+							<tr>
+								<td>D</td><td>D</td><td>D</td>
+							</tr>
+						</table>
+						<table border="0" style="float: inline-start;">
+							<tr><td>　　</td></tr>
+							<tr><td>　　</td></tr>
+							<tr><td>　　</td></tr>
+						</table>
+						<table border="1">
+							<tr>
+								<td>A</td><td>A</td><td>A</td>
+							</tr>
+							<tr>
+								<td></td><td>C</td><td>B</td>
+							</tr>
+							<tr>
+								<td>D</td><td>D</td><td>D</td>
+							</tr>
+						</table>
+						</div>
+						<p>
+						两者因对称完全相同。
+						</p>
+					</div>
+
+					<!--key-->
+					<div id="CS_key">
+						<p>
+							<i>key</i>解释合成表中的字符，值是一个对象。每一条属性对应一个字符。
+							键是字符，而值又是一个对象。
+						</p>
+						<div>
+							<textarea cols="50" rows="5">{
+	"A":{"item":"minecraft:apple"},
+	"B":{"item":"minecraft:apple"},
+	"C":{"item":"minecraft:apple"},
+	"D":{"item":"minecraft:apple"}
+}</textarea>
+						</div>
+					</div><!--key-->
+
+					<!--result-->
+					<div id="CS_result">
+						<p>
+							<i>result</i>表示合成的结果。值为一个对象，包含输出物品与数量。
+						</p>
+						<div>
+							<textarea cols="50" rows="3">{
+	"item":"minecraft:apple",
+	"count":8
+}</textarea>
+						</div>
+						<p>这表示输出8个苹果。</p>
+					</div>
+
+				</div><!--有序合成-->
+			</div><!--object.json-->
+		</div>
+
+		<div style="text-align:center;float:none;">
+			尾注:啥也没有
+		</div>
+	</body>
+</html>

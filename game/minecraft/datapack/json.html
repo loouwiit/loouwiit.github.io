@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JSON语法</title>
+		<base target="_self"> 
+		
+		<link rel="stylesheet" type="text/css" href="../../../resources/a.css">
+		<link rel="stylesheet" type="text/css" href="../../../resources/background.css">
+	</head>
+
+	<body>
+		<div style="height:1500px;width:20px;float:left;"></div>
+
+		<div style="height:1500px;width:auto;">
+			<h1>JSON语法</h1>
+
+			<a href="./datapack.html">返回数据包界面</a>
+
+			<!--数据包结构-->
+			<div>
+				<p>
+					<b>数据包文件结构</b>
+					<table border="0">
+						<tr>
+							<td>save/datapack/<a href="#name">name</a>/</td><td></td>
+						</tr>
+						<tr>
+							<td></td><td><a href="#pack.mcmeta">pack.mcmeta</a></td>
+						</tr>
+						<tr>
+							<td></td><td><a href="#pack.png">pack.png</a></td>
+						</tr>
+					</table>
+				</p>
+			</div>
+
+			<hr/>
+			<div id="name">
+				<p>
+					<b>名称</b> <br/>
+					名称不可以含中文字符
+				</p>
+			</div>
+
+			<hr/>
+			<div id="pack.mcmeta">
+				<p>
+					<b>pack.mcmeta</b> <br/>
+				</p>
+				<div>
+					<textarea rows="6" cols="50">{
+	"pack":
+	{
+		"pack_format":6,
+		"description":"这是描述"
+	}
+}</textarea>
+				</div>
+				<p>
+					此包的版本与描述 <br/>
+					版本对应见下表，描述任意 <br/>
+					<br/>
+					<a href="https://minecraft.fandom.com/zh/wiki/数据包#数据包版本" target="_blank">版本对应</a>
+					<table border="1">
+						<tr>
+							<th>pack_format</th> <th>版本</th>
+						</tr>
+						<tr>
+							<td>3</td> <td>17w43a-17w47b</td>
+						</tr>
+						<tr>
+							<td>4</td> <td>1.13（17w48a）-1.14.4（19w46b）</td>
+						</tr>
+						<tr>
+							<td>5</td> <td>1.15（1.15-pre1）-1.16.1（1.16.2-pre3）</td>
+						</tr>
+						<tr>
+							<td>6</td> <td>1.16.2（1.16.2-rc1）-1.16.5（20w45a）</td>
+						</tr>
+						<tr>
+							<td>7</td> <td>1.17（20w46a）-1.17.1（1.18-exp7）</td>
+						</tr>
+						<tr>
+							<td>8</td> <td>1.18（21w37a）-1.18.1（22w07a）</td>
+						</tr>
+						<tr>
+							<td>9</td> <td>1.18.2（1.18.2-pre1-1.18.2-rc1）</td>
+						</tr>
+						<tr>
+							<td>10</td> <td>1.19（22w11a及以上）</td>
+						 </tr>
+					</table>
+				</p>
+			</div>
+
+			<hr/>
+			<div id="pack.png">
+				<p>
+					<b>pack.png</b> <br/>
+					数据包可以添加一个图片作为数据包的图标。
+				</p>
+			</div>
+
+			<hr/>
+			<div id="Json">
+				<p>
+					<b>Json语法</b> <br/>
+					Json是由对象构建的，用大括号表示。对象具有属性，属性是键值对，用冒号分离键与值。用中括号括起来表示数组。属性间用逗号间隔。同时对象可以嵌套。字符串值需要加引号。（符号均为半角符号）<br/>
+					例如：
+				</p>
+				<div>
+					<textarea rows="11" cols="50">{
+	"属性A":123,
+	"属性B":"属性B的值",
+	"属性C":{
+			"嵌套对象属性1":456,
+			"嵌套对象属性2":[
+				"A",
+				"B",
+				"C"
+				]
+		}
+}</textarea>
+				</div>
+			</div>
+
+		</div> <!--中部显示区域（分割尾注）-->
+
+		<div style="text-align:center;float:none;">
+			尾注:啥也没有
+		</div>
+	</body>
+</html>
