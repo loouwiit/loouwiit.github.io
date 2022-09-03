@@ -1,0 +1,1 @@
+start ./swenlauncher.exe -m Display -iwb
